@@ -16,6 +16,7 @@ struct CLIExample: AsyncParsableCommand {
         subcommands: []
     )
 
+    @MainActor
     func run() async throws {
         for second in 0..<5 {
             print("\(second) seconds")
@@ -23,7 +24,7 @@ struct CLIExample: AsyncParsableCommand {
         }
         
         let launcher = WindowLauncher.shared
-        launcher.launchWindow(view: CLIView())
+        launcher.launchWindow(CLIView())
     }
 
 }
