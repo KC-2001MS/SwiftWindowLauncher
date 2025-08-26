@@ -42,7 +42,7 @@ Add the following files to the Package.swift file for use. For more information,
 
 ## Swift-DocC
 Swift-DocC is currently being implemented.
-[Documentation](https://kc-2001ms.github.io/SwiftWindowLauncher/documentation)
+[Documentation](https://kc-2001ms.github.io/SwiftWindowLauncher/documentation/windowlauncher/)
 
 ## Contribution
 See [CONTRIBUTING.md](https://github.com/KC-2001MS/SwiftWindowLauncher/blob/main/CONTRIBUTING.md) if you want to make a contribution.
