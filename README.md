@@ -6,7 +6,7 @@ The following environment is required to use this library.
 
 <p align="center">
     <img src="https://img.shields.io/badge/macOS-14.0+-red.svg" />
-    <img src="https://img.shields.io/badge/Swift-6.1-DE5D43.svg" />
+    <img src="https://img.shields.io/badge/Swift-6.0-DE5D43.svg" />
     <a href="https://twitter.com/IroIro1234work">
         <img src="https://img.shields.io/badge/Contact-@IroIro1234work-lightgrey.svg?style=flat" alt="Twitter: @IroIro1234work" />
     </a>
