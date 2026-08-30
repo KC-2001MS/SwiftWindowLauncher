@@ -24,7 +24,7 @@ struct CLIExample: AsyncParsableCommand {
         }
         
         let launcher = WindowLauncher.shared
-        launcher.launchWindow(CLIView())
+        launcher.launch(CLIView())
     }
 
 }

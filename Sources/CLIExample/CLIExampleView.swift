@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CLIView: View {
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -16,7 +18,7 @@ struct CLIView: View {
                     .padding()
                 
                 Button("Close Window") {
-                    NSApplication.shared.keyWindow?.close()
+                    dismiss()
                 }
                 .padding()
             }

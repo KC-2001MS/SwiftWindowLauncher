@@ -15,7 +15,7 @@ struct MainFuncExample {
             try await Task.sleep(for: .seconds(1))
         }
         
-        WindowLauncher.shared.launchWindow {
+        WindowLauncher.shared.launch {
             MainFuncView()
         }
     }

@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct MainFuncView: View {
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         NavigationStack {
             VStack {
                 Text("Hello, SwiftGUILauncher!")
                     .font(.largeTitle)
                     .padding()
+                
                 Button("Close Window") {
-                    NSApplication.shared.keyWindow?.close()
+                    dismiss()
                 }
                 .padding()
             }

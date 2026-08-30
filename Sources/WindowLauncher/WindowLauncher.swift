@@ -28,14 +28,14 @@ public final class WindowLauncher: @unchecked Sendable {
     ///
     /// - Note: The application main run loop is started by the delegated method.
     @MainActor
-    public func launchWindow<Content: View>(
+    public func launch<Content: View>(
         _ view: @Sendable @escaping () -> Content
     ) {
         let hostingView = NSHostingView(
             rootView: view().frame(maxWidth: .infinity, maxHeight: .infinity)
         )
 
-        self.launchWindow(hostingView)
+        self.launch(hostingView)
     }
     
     /// Launches a new window containing the given SwiftUI view.
@@ -48,14 +48,14 @@ public final class WindowLauncher: @unchecked Sendable {
     ///
     /// - Note: The application main run loop is started by the delegated method.
     @MainActor
-    public func launchWindow<Content: View>(
+    public func launch<Content: View>(
         _ view: @Sendable @autoclosure @escaping () -> Content
     ) {
         let hostingView = NSHostingView(
             rootView: view().frame(maxWidth: .infinity, maxHeight: .infinity)
         )
 
-        self.launchWindow(hostingView)
+        self.launch(hostingView)
     }
     
     /// Launches a new window containing the specified AppKit `NSView`.
@@ -72,11 +72,9 @@ public final class WindowLauncher: @unchecked Sendable {
     ///
     /// - Note: The application main run loop is started by this method.
     @MainActor
-    public func launchWindow(
+    public func launch(
         _ nsview: NSView
     ) {
-        print("Launching Window...")
-        //        Task { @MainActor in
         let app = NSApplication.shared
         app.setActivationPolicy(.regular)
         
@@ -116,9 +114,6 @@ public final class WindowLauncher: @unchecked Sendable {
         NSApp.activate(ignoringOtherApps: true)
 
         app.run()
-        //        }
-        //        
-        //        RunLoop.main.run()
     }
 }
 
