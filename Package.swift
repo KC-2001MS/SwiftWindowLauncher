@@ -12,12 +12,20 @@ let package = Package(
             name: "WindowLauncher",
             targets: ["WindowLauncher"]),
         .executable(
-            name: "CLI-Example",
-            targets: ["CLIExample"]
+            name: "CLI-SwiftUI-Example",
+            targets: ["CLISwiftUIExample"]
         ),
         .executable(
-            name: "MainFunc-Example",
-            targets: ["MainFuncExample"]
+            name: "CLI-AppKit-Example",
+            targets: ["CLIAppKitExample"]
+        ),
+        .executable(
+            name: "MainFunc-SwiftUI-Example",
+            targets: ["MainFuncSwiftUIExample"]
+        ),
+        .executable(
+            name: "MainFunc-AppKit-Example",
+            targets: ["MainFuncAppKitExample"]
         ),
     ],
     dependencies: [
@@ -29,14 +37,28 @@ let package = Package(
             name: "WindowLauncher"
         ),
         .executableTarget(
-            name: "CLIExample",
+            name: "CLISwiftUIExample",
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
                 "WindowLauncher"
             ]
         ),
         .executableTarget(
-            name: "MainFuncExample",
+            name: "CLIAppKitExample",
+            dependencies: [
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                "WindowLauncher"
+            ]
+        ),
+        .executableTarget(
+            name: "MainFuncSwiftUIExample",
+            dependencies: [
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                "WindowLauncher"
+            ]
+        ),
+        .executableTarget(
+            name: "MainFuncAppKitExample",
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
                 "WindowLauncher"

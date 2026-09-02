@@ -15,8 +15,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "MainFunc-Example"
-               BuildableName = "MainFunc-Example"
+               BlueprintIdentifier = "MainFunc-AppKit-Example"
+               BuildableName = "MainFunc-AppKit-Example"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,8 +44,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "MainFunc-Example"
-            BuildableName = "MainFunc-Example"
+            BlueprintIdentifier = "MainFunc-AppKit-Example"
+            BuildableName = "MainFunc-AppKit-Example"
             ReferencedContainer = "container:">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -60,8 +60,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "MainFunc-Example"
-            BuildableName = "MainFunc-Example"
+            BlueprintIdentifier = "MainFunc-AppKit-Example"
+            BuildableName = "MainFunc-AppKit-Example"
             ReferencedContainer = "container:">
          </BuildableReference>
       </BuildableProductRunnable>

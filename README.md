@@ -5,21 +5,36 @@ SwiftWindowLauncher is an easy way to open any window from the CLI or main funct
 The following environment is required to use this library.
 
 <p align="center">
-    <img src="https://img.shields.io/badge/macOS-14.0+-red.svg" />
-    <img src="https://img.shields.io/badge/Swift-6.0-DE5D43.svg" />
+    <img src="https://img.shields.io/badge/macOS-27.0+-red.svg" />
+    <img src="https://img.shields.io/badge/Swift-6.4-DE5D43.svg" />
     <a href="https://twitter.com/IroIro1234work">
         <img src="https://img.shields.io/badge/Contact-@IroIro1234work-lightgrey.svg?style=flat" alt="Twitter: @IroIro1234work" />
     </a>
 </p>
 
 ## Demo
-This package includes sample projects that demonstrate how to use it in practice.
+This package includes four executable targets that demonstrate every combination of entry point and UI framework. Each one opens a tab-based window (SwiftUI `TabView` / AppKit `NSTabViewController`) and keeps running its own work after the window is on screen.
+
+| Target | Entry point | UI framework |
+| --- | --- | --- |
+| `MainFunc-SwiftUI-Example` | `static func main()` | SwiftUI |
+| `MainFunc-AppKit-Example` | `static func main()` | AppKit |
+| `CLI-SwiftUI-Example` | `swift-argument-parser` command | SwiftUI |
+| `CLI-AppKit-Example` | `swift-argument-parser` command | AppKit |
+
+```shell
+swift run MainFunc-SwiftUI-Example
+```
 
 ## Usage
-By using this package, you can open any window during CLI or main function execution as follows.
+By using this package, you can open any window during CLI or main function execution.
+
+### SwiftUI
+Pass any SwiftUI view to `launch`. In an async context, `launch` returns once the content is actually on screen, so your code can keep running while the window stays open. The process terminates after every window has been closed.
+
 ```swift
-import WindowLauncher
 import SwiftUI
+import WindowLauncher
 
 struct ContentView: View {
     var body: some View {
@@ -27,8 +42,42 @@ struct ContentView: View {
     }
 }
 
-let launcher = WindowLauncher.shared
-launcher.launchWindow(view: ContentView())
+@main
+struct MyApp {
+    static func main() async throws {
+        await WindowLauncher.shared.launch {
+            ContentView()
+        }
+
+        // The window is now visible — you can keep working here.
+        print("Still running after the window opened!")
+    }
+}
+```
+
+Each subsequent `launch` call opens an additional window. The content is presented through a real SwiftUI `WindowGroup` scene, so native window chrome — such as the toolbar-integrated tab bar of a `TabView` and `navigationTitle` handling — works as in a regular SwiftUI app.
+
+### AppKit
+You can also pass an `NSViewController` or `NSView`. The window is created with `NSWindow(contentViewController:)`, so controller-driven window features — `NSToolbar` customization, `NSTabViewController` with `tabStyle = .toolbar`, and so on — integrate with the window the same way they do in a regular AppKit app.
+
+```swift
+import AppKit
+import WindowLauncher
+
+await WindowLauncher.shared.launch(
+    MyViewController(),
+    title: "Swift Window Launcher"
+)
+```
+
+### Synchronous launch
+Calling `launch` from a non-async context starts the application's main run loop on the spot and never returns. Use this form when opening the window is the last thing your program does.
+
+```swift
+WindowLauncher.shared.launch {
+    ContentView()
+}
+// Never reached.
 ```
 
 ## Install
